@@ -449,6 +449,8 @@ async function loadSkillsFromSkillsDir(
           skillFilePath,
         )
 
+        logForDebugging(`[frontmatter]: frontmatter is :${JSON.stringify(frontmatter)}`)
+
         const skillName = entry.name
         const parsed = parseSkillFrontmatterFields(
           frontmatter,

@@ -375,6 +375,7 @@ async function getSkills(cwd: string): Promise<{
     const bundledSkills = getBundledSkills()
     // Built-in plugin skills come from enabled built-in plugins
     const builtinPluginSkills = getBuiltinPluginSkillCommands()
+    logForDebugging(`[skillDirCommands]: ${JSON.stringify(skillDirCommands)}`)
     logForDebugging(
       `getSkills returning: ${skillDirCommands.length} skill dir commands, ${pluginSkills.length} plugin skills, ${bundledSkills.length} bundled skills, ${builtinPluginSkills.length} builtin plugin skills`,
     )
