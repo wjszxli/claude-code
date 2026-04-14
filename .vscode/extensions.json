@@ -1,0 +1,32 @@
+{
+  "recommendations": [
+    // Vitest
+    "vitest.explorer",
+    "yoavbls.pretty-ts-errors",
+
+    // TypeScript
+    "dbaeumer.vscode-typescript-next",
+
+    // Testing
+    "firsttris.vscode-jest-runner",
+    "connorshea.vscode-jest-snippets",
+
+    // Code quality
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+
+    // Productivity
+    "christian-kohler.path-intellisense",
+    "usernamehw.errorlens",
+    "oderwat.indent-rainbow",
+    "wix.vscode-import-cost",
+
+    // Git
+    "eamodio.gitlens",
+
+    // Utils
+    "wayou.vscode-todo-highlight",
+    "chrmarti.regex",
+    "gruntfuggly.todo-tree"
+  ]
+}

@@ -8,7 +8,10 @@
     "build": "bun run build.ts",
     "start": "bun dist/cli.js",
     "dev": "bun src/entrypoints/cli.tsx",
-    "debugger": "bun src/entrypoints/cli.tsx --debug"
+    "debugger": "bun src/entrypoints/cli.tsx --debug",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:loadSkillsDir": "vitest run src/skills/loadSkillsDir.test.ts"
   },
   "dependencies": {
     "@alcalzone/ansi-tokenize": "*",
@@ -111,7 +114,8 @@
     "@types/react": "*",
     "@types/ws": "*",
     "bun-types": "*",
-    "typescript": "*"
+    "typescript": "*",
+    "vitest": "^4.1.3"
   },
   "bin": {
     "claude": "./dist/cli.js"

@@ -1,0 +1,70 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "🧪 Run All Tests",
+      "type": "shell",
+      "command": "bun",
+      "args": ["run", "test"],
+      "group": "test",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    },
+    {
+      "label": "👁️ Run Tests in Watch Mode",
+      "type": "shell",
+      "command": "bun",
+      "args": ["run", "test:watch"],
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    },
+    {
+      "label": "📄 Run Current Test File",
+      "type": "shell",
+      "command": "bun",
+      "args": ["run", "vitest", "run", "${relativeFile}"],
+      "group": "test",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    },
+    {
+      "label": "🔍 Run Test by Pattern",
+      "type": "shell",
+      "command": "bun",
+      "args": ["run", "vitest", "run", "-t", "${input:testPattern}"],
+      "group": "test",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    },
+    {
+      "label": "📊 Run Tests with Coverage",
+      "type": "shell",
+      "command": "bun",
+      "args": ["run", "vitest", "run", "--coverage"],
+      "group": "test",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    }
+  ],
+  "inputs": [
+    {
+      "id": "testPattern",
+      "type": "promptString",
+      "description": "Enter test pattern (e.g., 'buildNamespace', 'parseSkillFrontmatterFields')"
+    }
+  ]
+}

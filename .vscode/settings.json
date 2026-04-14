@@ -1,0 +1,40 @@
+{
+  // Vitest settings
+  "vitest.enable": true,
+  "vitest.commandLine": "bun run vitest",
+  "vitest.include": [
+    "src/**/*.test.ts",
+    "src/**/*.test.tsx"
+  ],
+
+  // Test discovery
+  "testing.gutterEnabled": true,
+  "testing.automaticallyOpenPeekView": "failureInVisibleDocument",
+
+  // Editor behavior
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.organizeImports": "explicit"
+  },
+  "editor.formatOnSave": true,
+
+  // TypeScript
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+
+  // Files
+  "files.exclude": {
+    "**/.git": true,
+    "**/.DS_Store": true,
+    "**/node_modules": true,
+    "**/dist": true
+  },
+  "files.watcherExclude": {
+    "**/node_modules/**": true,
+    "**/dist/**": true
+  },
+
+  // Debugging
+  "debug.javascript.autoAttachFilter": "smart",
+  "debug.node.autoAttach": "on"
+}
