@@ -103,7 +103,12 @@ export function parseFrontmatter(markdown: string): {
   for (const line of rawFm.split('\n')) {
     const listMatch = line.match(/^\s+-\s+(.+)$/)
     if (listMatch) {
-      listItems.push(listMatch[1]!.trim())
+      let val = listMatch[1]!.trim()
+      // Strip wrapping quotes
+      if ((val.startsWith('"') && val.endsWith('"')) || (val.startsWith("'") && val.endsWith("'"))) {
+        val = val.slice(1, -1)
+      }
+      listItems.push(val)
       if (inList) {
         frontmatter[currentKey] = [...listItems]
       }
@@ -144,7 +149,13 @@ function parseValue(value: string): unknown {
   if (/^\d+$/.test(value)) return parseInt(value, 10)
   // 数组格式: [A, B, C]
   if (value.startsWith('[') && value.endsWith(']')) {
-    return value.slice(1, -1).split(',').map(s => s.trim())
+    return value.slice(1, -1).split(',').map(s => {
+      const trimmed = s.trim()
+      if ((trimmed.startsWith('"') && trimmed.endsWith('"')) || (trimmed.startsWith("'") && trimmed.endsWith("'"))) {
+        return trimmed.slice(1, -1)
+      }
+      return trimmed
+    })
   }
   return value
 }
@@ -207,17 +218,18 @@ export class SkillRegistry {
 
   /** 注册技能 */
   register(skill: Skill): void {
-    // 同名技能: 保留已注册的 (先注册 = 高优先级来源)
-    if (!this.skills.has(skill.name)) {
-      this.skills.set(skill.name, skill)
-    }
-
-    // 条件技能单独管理
+    // 条件技能: 只加入 conditionalSkills，不直接注册
     if (skill.conditionalPaths.length > 0) {
       this.conditionalSkills.push({
         paths: skill.conditionalPaths,
         skill,
       })
+      return
+    }
+
+    // 同名技能: 保留已注册的 (先注册 = 高优先级来源)
+    if (!this.skills.has(skill.name)) {
+      this.skills.set(skill.name, skill)
     }
   }
 
